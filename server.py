@@ -68,6 +68,12 @@ server = ModularServer(
     ForestModel,
     [grid, log_panel, PopupElement()],
     "Illegal Deforestation Simulation",
-    {"width": width, "height": height, "num_drones": 1, "num_law": 1, "num_lumberjacks": 1}
+    {
+        "width": width, 
+        "height": height, 
+        "num_drones": 1, 
+        "num_law": 1, 
+        "num_lumberjacks": 2
+    }
 )
 server.port = 8522
