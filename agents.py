@@ -1,6 +1,6 @@
 from mesa import Agent
 
-class TreeCell(Agent):
+class Tree(Agent):
     def __init__(self, unique_id, model, is_tree=True):
         super().__init__(unique_id, model)
         self.is_tree = is_tree
@@ -108,7 +108,7 @@ class LumberjackAgent(Agent):
             return
         cell = self.model.grid.get_cell_list_contents([self.pos])
         for obj in cell:
-            if isinstance(obj, TreeCell) and obj.is_tree and not obj.is_cut:
+            if isinstance(obj, Tree) and obj.is_tree and not obj.is_cut:
                 self.cut_delay = 4  
                 obj.is_cut = True
                 obj.is_tree = False

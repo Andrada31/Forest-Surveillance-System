@@ -1,7 +1,7 @@
 from mesa import Model
 from mesa.time import RandomActivation
 from mesa.space import MultiGrid
-from agents import DroneAgent, LawAgent, LumberjackAgent, TreeCell
+from agents import DroneAgent, LawAgent, LumberjackAgent, Tree
 import random
 import networkx as nx
 
@@ -16,7 +16,7 @@ class ForestModel(Model):
 
         for x in range(self.grid.width):
             for y in range(self.grid.height):
-                tree = TreeCell(self.next_uid, self)
+                tree = Tree(self.next_uid, self)
                 self.next_uid += 1
                 self.grid.place_agent(tree, (x, y))
 
@@ -24,7 +24,7 @@ class ForestModel(Model):
             x, y = random.randrange(width), random.randrange(height)
             cell_contents = self.grid.get_cell_list_contents((x, y))
             for obj in cell_contents:
-                if isinstance(obj, TreeCell) and not obj.is_cut:
+                if isinstance(obj, Tree) and not obj.is_cut:
                     obj.is_cut = True
                     obj.is_tree = False
 

@@ -1,10 +1,10 @@
 from mesa.visualization.modules import CanvasGrid, TextElement
 from mesa.visualization.ModularVisualization import ModularServer
 from model import ForestModel
-from agents import DroneAgent, LawAgent, LumberjackAgent, TreeCell
+from agents import DroneAgent, LawAgent, LumberjackAgent, Tree
 
 def agent_portrayal(agent):
-    if isinstance(agent, TreeCell):
+    if isinstance(agent, Tree):
         img = "tree.png"
         if agent.is_cut:
             img = "tree_cut.png"
@@ -47,8 +47,8 @@ def agent_portrayal(agent):
 
 class LogElement(TextElement):
     def render(self, model):
-        return "<div style='font-family: monospace; font-size: 14px; max-height: 500px; overflow-y: scroll; border: 1px solid #ccc; padding: 5px;'>\
-                <b>📜 Event Log</b><br>" + "<br>".join(model.logs[-30:]) + "</div>"
+        return "<div style=' font-family: monospace; font-size: 14px; max-height: 500px; overflow-y: scroll; border: 1px solid #ccc; padding: 5px; margin-top:20px; width:58%;'>\
+                <b>Event Log</b><br>" + "<br>".join(model.logs[-30:]) + "</div>"
     
 class PopupElement(TextElement):
     def render(self, model):
@@ -70,4 +70,4 @@ server = ModularServer(
     "Illegal Deforestation Simulation",
     {"width": width, "height": height, "num_drones": 1, "num_law": 1, "num_lumberjacks": 1}
 )
-server.port = 8521
+server.port = 8522
